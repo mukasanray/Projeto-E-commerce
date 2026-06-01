@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* VARIÁVEIS */
+/* ================= VARIÁVEIS ================= */
 :root {
   --verde: #009b3a;
   --amarelo: #ffdf00;
@@ -53,7 +53,7 @@
   --cor-borda: rgba(255,255,255,0.1);
 }
 
-/* RESET */
+/* ================= RESET ================= */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Inter', Arial, sans-serif; background: var(--cor-fundo); color: var(--cor-texto); line-height: 1.5; transition: background 0.3s, color 0.3s; }
 body.no-scroll { overflow: hidden; }
@@ -61,7 +61,7 @@ img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; color: inherit; }
 
-/* CABEÇALHO */
+/* ================= CABEÇALHO ================= */
 .cabecalho {
   position: sticky; top: 0; z-index: 100;
   background: rgba(251,251,253,0.72);
@@ -127,7 +127,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .carrinho-badge.visivel { transform: scale(1); }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero {
   position: relative; padding: 100px 24px 80px; text-align: center; overflow: hidden;
 }
@@ -167,7 +167,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .botao-secundario:hover { background: var(--cor-superficie); transform: translateY(-2px); }
 
-/* CATEGORIAS */
+/* ================= CATEGORIAS ================= */
 .categorias-container {
   position: sticky; top: 70px; z-index: 90;
   background: rgba(251,251,253,0.85); backdrop-filter: var(--blur);
@@ -341,7 +341,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .finalizar-btn:not(:disabled) { opacity: 1; cursor: pointer; }
 .finalizar-btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: var(--sombra-lg); }
 
-/* TOAST */
+/* ================= TOAST ================= */
 .toast {
   position: fixed; top: 90px; right: 24px; background: var(--cor-superficie);
   padding: 14px 20px; border-radius: var(--raio-md); box-shadow: var(--sombra-lg);
@@ -392,7 +392,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 <body>
 
-<!--  HEADER -->
+<!-- ================= HEADER ================= -->
 <header class="cabecalho">
   <div class="cabecalho-conteudo">
     <a href="#" class="logo" aria-label="Super Tech Store Apple">
@@ -409,11 +409,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     </div>
 
     <div class="acoes-cabecalho">
-  <button class="carrinho-icone" id="abrir-carrinho" aria-label="Abrir carrinho">
-    <i class="fa-solid fa-cart-shopping"></i>
-    <span class="carrinho-badge" id="carrinho-badge">0</span>
-  </button>
-</div>
+      <button class="botao-tema" id="botao-tema" aria-label="Alternar tema">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <button class="carrinho-icone" id="abrir-carrinho" aria-label="Abrir carrinho">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="carrinho-badge" id="carrinho-badge">0</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -437,7 +440,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   </div>
 </section>
 
-<!-- CATEGORIAS -->
+<!-- ================= CATEGORIAS ================= -->
 <section class="categorias-container">
   <nav class="categorias-barra" role="tablist">
     <button class="categoria-btn ativa" data-categoria="all"><i class="fa-solid fa-border-all"></i> Todos</button>
@@ -449,7 +452,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   </nav>
 </section>
 
-<!-- PRODUTOS -->
+<!-- ================= PRODUTOS ================= -->
 <main class="produtos" id="produtos">
   <section class="produtos-cabecalho">
     <div>
@@ -553,7 +556,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
     <article class="produto-card" data-categoria="smartphones" data-nome="Tablet XP-Pen Magic Drawing Pad 2025">
       <div class="produto-imagem-container">
-<img src="./Tablet XP-Pen Magic Drawing Pad 2025 Azul Android 14 com Caneta de 16K Níveis de Pressão MDP12.webp" alt="Tablet XP-Pen Magic Drawing Pad 2025" class="produto-imagem" />
+        <img src="." alt="Tablet XP-Pen Magic Drawing Pad 2025" class="produto-imagem" />
       </div>
       <div class="produto-info">
         <span class="produto-categoria">Tablet</span>
@@ -686,7 +689,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   </div>
 </main>
 
-<!-- OVERLAY E CARRINHO -->
+<!-- ================= OVERLAY E CARRINHO ================= -->
 <div class="carrinho-overlay" id="carrinho-overlay"></div>
 
 <aside class="carrinho-lateral" id="carrinho-lateral" aria-label="Carrinho de compras">
@@ -717,13 +720,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   </div>
 </aside>
 
-<!--TOAST-->
+<!-- ================= TOAST ================= -->
 <div class="toast" id="toast">
   <i class="fa-solid fa-circle-check"></i>
   <span id="toast-mensagem">Produto adicionado!</span>
 </div>
 
-<!--FOOTER-->
+<!-- ================= FOOTER ================= -->
 <footer class="rodape">
   <div class="rodape-conteudo">
     <div class="rodape-logo">
@@ -741,8 +744,187 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   </div>
 </footer>
 
-<!--JAVASCRIPT-->
-<script src="script.js" defer></script>
-<!--FONTS AWESOME-->
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+(() => {
+  // ============ ESTADO ============
+  let carrinho = JSON.parse(localStorage.getItem('carrinho_sts') || '[]');
+  const WHATSAPP_NUMERO = '5511999999999'; // ⚠️ Troque pelo número real
+
+  // ============ SELETORES ============
+  const $ = (sel) => document.querySelector(sel);
+  const $$
+= (sel) => document.querySelectorAll(sel); const buscaInput = $('#busca-input'); const buscaLimpar = $('#busca-limpar'); const botaoTema = $('#botao-tema'); const abrirCarrinho = $('#abrir-carrinho'); const fecharCarrinho = $('#fechar-carrinho'); const carrinhoOverlay = $('#carrinho-overlay'); const carrinhoLateral = $('#carrinho-lateral'); const carrinhoBadge = $('#carrinho-badge'); const carrinhoCorpo = $('#carrinho-corpo'); const carrinhoVazio = $('#carrinho-vazio'); const carrinhoResumo = $('#carrinho-resumo'); const carrinhoSubtotal = $('#carrinho-subtotal'); const carrinhoTotal = $('#carrinho-total'); const finalizarBtn = $('#finalizar-pedido-btn'); const produtosGrid = $('#produtos-grid'); const produtosVazio = $('#produtos-vazio'); const categoriaTitulo = $('#categoria-titulo'); const categoriaContagem = $('#categoria-contagem'); const toast = $('#toast'); const toastMensagem = $('#toast-mensagem'); // ============ UTILS ============ const formatarPreco = (valor) => valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); const salvarCarrinho = () => localStorage.setItem('carrinho_sts', JSON.stringify(carrinho)); const exibirToast = (mensagem, icone = 'fa-circle-check', cor = 'var(--cor-sucesso)') => { toastMensagem.textContent = mensagem; const i = toast.querySelector('i'); i.className = `fa-solid ${icone}`; i.style.color = cor; toast.classList.add('visivel'); clearTimeout(toast._timer); toast._timer = setTimeout(() => toast.classList.remove('visivel'), 2500); }; // ============ TEMA ============ const aplicarTema = (tema) => { document.documentElement.setAttribute('data-tema', tema); const icone = botaoTema.querySelector('i'); icone.className = tema === 'escuro' ? 'fa-solid fa-sun' : 'fa-solid fa-moon'; localStorage.setItem('tema_sts', tema); }; aplicarTema(localStorage.getItem('tema_sts') || 'claro'); botaoTema.addEventListener('click', () => { const atual = document.documentElement.getAttribute('data-tema'); aplicarTema(atual === 'escuro' ? 'claro' : 'escuro'); }); // ============ BUSCA ============ const filtrarProdutos = () => { const termo = buscaInput.value.trim().toLowerCase(); const categoriaAtiva = document.querySelector('.categoria-btn.ativa').dataset.categoria; let visiveis = 0;
+$$('.produto-card').forEach((card) => {
+      const nome = (card.dataset.nome || '').toLowerCase();
+      const categoria = card.dataset.categoria;
+      const matchTermo = !termo || nome.includes(termo);
+      const matchCategoria = categoriaAtiva === 'all' || categoria === categoriaAtiva;
+      const visivel = matchTermo && matchCategoria;
+      card.style.display = visivel ? '' : 'none';
+      if (visivel) visiveis++;
+    });
+
+    produtosVazio.style.display = visiveis === 0 ? 'block' : 'none';
+    produtosGrid.style.display = visiveis === 0 ? 'none' : 'grid';
+    categoriaContagem.textContent = `${visiveis} ${visiveis === 1 ? 'item' : 'itens'}`;
+    buscaLimpar.classList.toggle('visivel', termo.length > 0);
+  });
+
+  buscaInput.addEventListener('input', filtrarProdutos);
+  buscaLimpar.addEventListener('click', () => {
+    buscaInput.value = '';
+    filtrarProdutos();
+    buscaInput.focus();
+  });
+
+  // ============ CATEGORIAS ============
+  $$
+('.categoria-btn').forEach((btn) => { btn.addEventListener('click', () => {
+$$('.categoria-btn').forEach((b) => b.classList.remove('ativa'));
+      btn.classList.add('ativa');
+      const categoria = btn.dataset.categoria;
+      categoriaTitulo.textContent =
+        categoria === 'all' ? 'Todos os produtos' : btn.textContent.trim();
+      filtrarProdutos();
+    });
+  });
+
+  // ============ CARRINHO ============
+  const abrirCarrinhoUI = () => {
+    carrinhoLateral.classList.add('ativo');
+    carrinhoOverlay.classList.add('ativo');
+    document.body.classList.add('no-scroll');
+  };
+  const fecharCarrinhoUI = () => {
+    carrinhoLateral.classList.remove('ativo');
+    carrinhoOverlay.classList.remove('ativo');
+    document.body.classList.remove('no-scroll');
+  };
+
+  abrirCarrinho.addEventListener('click', abrirCarrinhoUI);
+  fecharCarrinho.addEventListener('click', fecharCarrinhoUI);
+  carrinhoOverlay.addEventListener('click', fecharCarrinhoUI);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && carrinhoLateral.classList.contains('ativo')) fecharCarrinhoUI();
+  });
+
+  const adicionarAoCarrinho = (produto) => {
+    const existente = carrinho.find((i) => i.id === produto.id);
+    if (existente) existente.quantidade += 1;
+    else carrinho.push({ ...produto, quantidade: 1 });
+    salvarCarrinho();
+    renderizarCarrinho();
+    exibirToast(`${produto.nome} adicionado!`);
+  };
+
+  const alterarQuantidade = (id, delta) => {
+    const item = carrinho.find((i) => i.id === id);
+    if (!item) return;
+    item.quantidade += delta;
+    if (item.quantidade <= 0) carrinho = carrinho.filter((i) => i.id !== id);
+    salvarCarrinho();
+    renderizarCarrinho();
+  };
+
+  const removerItem = (id) => {
+    carrinho = carrinho.filter((i) => i.id !== id);
+    salvarCarrinho();
+    renderizarCarrinho();
+    exibirToast('Item removido', 'fa-trash', 'var(--cor-erro)');
+  };
+
+  const renderizarCarrinho = () => {
+    // Badge
+    const totalItens = carrinho.reduce((s, i) => s + i.quantidade, 0);
+    carrinhoBadge.textContent = totalItens;
+    carrinhoBadge.classList.toggle('visivel', totalItens > 0);
+
+    // Conteúdo
+    if (carrinho.length === 0) {
+      carrinhoCorpo.innerHTML = `
+        <div class="carrinho-vazio">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <h4>Seu carrinho está vazio</h4>
+          <p>Adicione produtos para começar.</p>
+        </div>`;
+      carrinhoResumo.style.display = 'none';
+      finalizarBtn.disabled = true;
+    } else {
+      carrinhoCorpo.innerHTML = carrinho
+        .map(
+          (item) => `
+        <div class="carrinho-item">
+          <img src="${item.imagem}" alt="${item.nome}" class="carrinho-item-img" onerror="this.style.background='var(--cor-superficie-2)';this.src='';" />
+          <div class="carrinho-item-info">
+            <span class="carrinho-item-nome">${item.nome}</span>
+            <span class="carrinho-item-preco">${formatarPreco(item.preco * item.quantidade)}</span>
+            <div class="carrinho-item-controles">
+              <button class="qtd-btn" data-acao="diminuir" data-id="${item.id}" aria-label="Diminuir">
+                <i class="fa-solid fa-minus"></i>
+              </button>
+              <span class="qtd-valor">${item.quantidade}</span>
+              <button class="qtd-btn" data-acao="aumentar" data-id="${item.id}" aria-label="Aumentar">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+          <button class="remover-item-btn" data-id="${item.id}" aria-label="Remover">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>`
+        )
+        .join('');
+
+      const subtotal = carrinho.reduce((s, i) => s + i.preco * i.quantidade, 0);
+      carrinhoSubtotal.textContent = formatarPreco(subtotal);
+      carrinhoTotal.textContent = formatarPreco(subtotal);
+      carrinhoResumo.style.display = 'block';
+      finalizarBtn.disabled = false;
+    }
+  };
+
+  // Delegação de eventos: adicionar
+  produtosGrid.addEventListener('click', (e) => {
+    const btn = e.target.closest('.adicionar-carrinho');
+    if (!btn) return;
+    adicionarAoCarrinho({
+      id: btn.dataset.id,
+      nome: btn.dataset.nome,
+      preco: parseFloat(btn.dataset.preco),
+      imagem: btn.dataset.imagem,
+    });
+  });
+
+  // Delegação: controles do carrinho
+  carrinhoCorpo.addEventListener('click', (e) => {
+    const btnQtd = e.target.closest('.qtd-btn');
+    const btnRemover = e.target.closest('.remover-item-btn');
+    if (btnQtd) {
+      alterarQuantidade(btnQtd.dataset.id, btnQtd.dataset.acao === 'aumentar' ? 1 : -1);
+    } else if (btnRemover) {
+      removerItem(btnRemover.dataset.id);
+    }
+  });
+
+  // ============ FINALIZAR VIA WHATSAPP ============
+  finalizarBtn.addEventListener('click', () => {
+    if (carrinho.length === 0) return;
+    let mensagem = '🛒 *Novo Pedido — Super Tech Store Apple*\n\n';
+    carrinho.forEach((item) => {
+      mensagem += `• *${item.nome}*\n  Qtd: ${item.quantidade} × ${formatarPreco(item.preco)} = ${formatarPreco(item.preco * item.quantidade)}\n\n`;
+    });
+    const total = carrinho.reduce((s, i) => s + i.preco * i.quantidade, 0);
+    mensagem += `\n*Total: ${formatarPreco(total)}*`;
+    const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, '_blank');
+  });
+
+  // ============ INICIALIZAÇÃO ============
+  renderizarCarrinho();
+  filtrarProdutos();
+;
+</script>
+
 </body>
 </html>

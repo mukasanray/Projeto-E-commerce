@@ -69,7 +69,7 @@
             categoria: 'laptops',
             categoriaLabel: 'Tablet',
             preco: 3949,
-            imagem: './Tablet XP-Pen Magic Drawing Pad 2025 Azul Android 14 com Caneta de 16K Níveis de Pressão MDP1221.jpg'
+imagem: './Tablet XP-Pen Magic Drawing Pad 2025 Azul Android 14 com Caneta de 16K Níveis de Pressão MDP12.webp'
         },
 
         {
