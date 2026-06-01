@@ -268,10 +268,14 @@ imagem: './Tablet XP-Pen Magic Drawing Pad 2025 Azul Android 14 com Caneta de 16
         $$('.produto-card').forEach(card => {
 
             const nome = card.dataset.nome.toLowerCase();
-            const categoria = card.dataset.categoria;
+            const categoria = (card.dataset.categoria || '').toLowerCase();
+            const categoriaTexto = ($('.produto-categoria', card)?.textContent || '').toLowerCase();
 
             const matchBusca =
-                !termo || nome.includes(termo);
+                !termo ||
+                nome.includes(termo) ||
+                categoria.includes(termo) ||
+                categoriaTexto.includes(termo);
 
             const matchCategoria =
                 categoriaAtiva === 'all' ||
