@@ -216,6 +216,7 @@ imagem: './Tablet XP-Pen Magic Drawing Pad 2025 Azul Android 14 com Caneta de 16
         elementos.produtosGrid.innerHTML = produtos.map(produto => `
             <article class="produto-card" data-categoria="${produto.categoria}" data-nome="${produto.nome}">
 
+
                 <div class="produto-imagem-container">
                     <img
                         src="${produto.imagem}"
@@ -259,33 +260,53 @@ imagem: './Tablet XP-Pen Magic Drawing Pad 2025 Azul Android 14 com Caneta de 16
 
     /* FILTRO */
 
+    const normalizarTexto = (texto = '') =>
+        texto
+            .toString()
+            .normalize('NFD')
+            .replace(/\p{Diacritic}/gu, '')
+            .toLowerCase()
+            .trim();
+
     const filtrarProdutos = () => {
 
-        const termo = termoBusca.toLowerCase();
+        const termo = normalizarTexto(termoBusca);
 
         let visiveis = 0;
 
         $$('.produto-card').forEach(card => {
 
-            const nome = card.dataset.nome.toLowerCase();
-            const categoria = (card.dataset.categoria || '').toLowerCase();
-            const categoriaTexto = ($('.produto-categoria', card)?.textContent || '').toLowerCase();
+            // Fontes confiáveis (texto exibido no card)
+            const nomeTexto = normalizarTexto(
+                $('.produto-nome', card)?.textContent
+            );
+            const categoriaTexto = normalizarTexto(
+                $('.produto-categoria', card)?.textContent
+            );
+
+            // fallback (caso exista data-*)
+            const nomeData = normalizarTexto(card.dataset.nome);
+            const categoriaData = normalizarTexto(card.dataset.categoria);
 
             const matchBusca =
                 !termo ||
-                nome.includes(termo) ||
-                categoria.includes(termo) ||
-                categoriaTexto.includes(termo);
+                nomeTexto.includes(termo) ||
+                categoriaTexto.includes(termo) ||
+                nomeData.includes(termo) ||
+                categoriaData.includes(termo);
+
+            // categoriaAtiva usa o valor do data-categoria dos botões
+            // (ex: smartphones, laptops, etc.)
+            const categoriaAtivaNormalizada = normalizarTexto(categoriaAtiva);
+            const categoriaCardNormalizada = normalizarTexto(card.dataset.categoria);
 
             const matchCategoria =
-                categoriaAtiva === 'all' ||
-                categoria === categoriaAtiva;
+                categoriaAtivaNormalizada === 'all' ||
+                categoriaCardNormalizada === categoriaAtivaNormalizada;
 
-            const mostrar =
-                matchBusca && matchCategoria;
+            const mostrar = matchBusca && matchCategoria;
 
-            card.style.display =
-                mostrar ? '' : 'none';
+            card.style.display = mostrar ? '' : 'none';
 
             if (mostrar) visiveis++;
         });
@@ -513,6 +534,36 @@ imagem: './Tablet XP-Pen Magic Drawing Pad 2025 Azul Android 14 com Caneta de 16
         elementos.buscaInput?.addEventListener('input', e => {
             termoBusca = e.target.value;
             filtrarProdutos();
+        });
+
+        // Se o usuário apertar Enter, mantém o filtro
+        elementos.buscaInput?.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                termoBusca = elementos.buscaInput.value;
+                filtrarProdutos();
+
+                // Força scroll após Enter (evita “travamento” de rolagem em alguns navegadores)
+                // Atualiza a UI e garante scroll consistente do painel lateral
+                const carrinhoCorpo = document.getElementById('carrinho-corpo');
+                if (carrinhoCorpo) {
+                    carrinhoCorpo.style.overflowY = 'auto';
+
+                    // “Solta” o scroll: preserva posição atual após o reflow
+                    const y = carrinhoCorpo.scrollTop;
+                    requestAnimationFrame(() => {
+                        carrinhoCorpo.scrollTop = y;
+                    });
+                }
+
+                // Garante rolagem do conteúdo principal (produtos)
+                requestAnimationFrame(() => {
+                    elementos.produtosGrid?.scrollIntoView({ block: 'nearest' });
+                });
+
+                // Reaplica o foco sem disparar scroll no input
+                elementos.buscaInput.focus({ preventScroll: true });
+            }
         });
 
         elementos.buscaLimpar?.addEventListener('click', () => {
