@@ -3,7 +3,7 @@ Landing page de tecnologia inspirada na Apple, com temática de Copa do Mundo e 
 
 ## Funcionalidades
 
-- Catálogo de produtos
+- Site com catálogo acomodando 12 Produtos
 - Busca dinâmica
 - Filtro por categorias
 - Carrinho de compras
