@@ -7,7 +7,7 @@ Landing page de tecnologia inspirada na Apple, com temática de Copa do Mundo e 
 - Busca dinâmica
 - Filtro por categorias
 - Carrinho de compras
-- Tema claro e escuro
+- Tema claro 
 - Persistência com LocalStorage
 - Finalização via WhatsApp
 
